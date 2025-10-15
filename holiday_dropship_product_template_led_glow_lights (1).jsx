@@ -114,7 +114,15 @@ const PRODUCT_DATA = {
   ],
   // UGC/TikTok-like short clips or images
   ugc: [
-    { type: "img", src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop", alt: "Bedroom before/after glowformat&fit=crop", alt: "Bedroom before/after glow" },
+    { type: "img", src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop", alt: "Bedroom before/after glow" },
+    { type: "img", src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop", alt: "Tree wrap demo" },
+    { type: "img", src: "https://images.unsplash.com/photo-1513289931115-39538e9d2f71?q=80&w=1600&auto=format&fit=crop", alt: "Mantel styling" },
+    { type: "img", src: "https://images.unsplash.com/photo-1483721310020-03333e577078?q=80&w=1600&auto=format&fit=crop", alt: "Party string lights" },
+  ],
+};
+  // UGC/TikTok-like short clips or images
+  ugc: [
+    { type: "img", src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop", alt: "Bedroom before/after glow" },
     { type: "img", src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop", alt: "Tree wrap demo" },
     { type: "img", src: "https://images.unsplash.com/photo-1513289931115-39538e9d2f71?q=80&w=1600&auto=format&fit=crop", alt: "Mantel styling" },
     { type: "img", src: "https://images.unsplash.com/photo-1483721310020-03333e577078?q=80&w=1600&auto=format&fit=crop", alt: "Party string lights" },
@@ -257,6 +265,8 @@ export default function EcommerceHolidayProduct() {
               </div>
             </div>
 
+            <BundleSave onSelect={(count) => setQty(count)} />
+
             <div className="flex items-center gap-4">
               <div className="flex items-center rounded-xl border bg-white px-2">
                 <button
@@ -269,11 +279,9 @@ export default function EcommerceHolidayProduct() {
                 <input
                   className="w-12 text-center py-2 outline-none"
                   value={qty}
-                  onChange={(e) => setQty(Math.max(1, Number(e.target.value) || 1)
-
-            <BundleSave onSelect={(count) => setQty(count)} />
-
-            <div className="flex items-center gap-4">    aria-label="Quantity"
+                  onChange={(e) => setQty(Math.max(1, Number(e.target.value) || 1))}
+                  inputMode="numeric"
+                  aria-label="Quantity"
                 />
                 <button
                   className="px-3 py-2 text-xl"
@@ -312,6 +320,8 @@ export default function EcommerceHolidayProduct() {
         {/* UGC / Social proof */}
         <UGCGrid items={PRODUCT_DATA.ugc} />
 
+        <SocialProofReels />
+
         {/* Testimonials */}
         <Testimonials />
 
@@ -328,9 +338,9 @@ export default function EcommerceHolidayProduct() {
             onClick={addToCart}
             className="flex-1 rounded-2xl bg-neutral-900 px-6 py-4 text-white font-semibold shadow"
           >
-            Add to Cart • {fmt(lineTotal)}<UGCGrid items={PRODUCT_DATA.ugc} />
-
-        <SocialProofReels />on
+            Add to Cart • {fmt(lineTotal)}
+          </button>
+          <button
             onClick={() => setCartOpen(true)}
             className="rounded-2xl border px-4 py-4 font-semibold"
           >
@@ -375,7 +385,10 @@ function Header({ cartCount, onCart }: { cartCount: number; onCart: () => void }
           <div className="h-9 w-9 rounded-xl bg-neutral-900" aria-hidden />
           <a href="#" className="font-bold tracking-tight text-lg">GlowGoods</a>
         </div>
-        <nav className="hidden md:flex items-center gap-6 text-sm texf="#faq">FAQ</a>
+        <nav className="hidden md:flex items-center gap-6 text-sm text-neutral-700">
+          <a className="hover:text-neutral-900" href="#details">Details</a>
+          <a className="hover:text-neutral-900" href="#ugc">Gallery</a>
+          <a className="hover:text-neutral-900" href="#faq">FAQ</a>
         </nav>
         <div className="flex items-center gap-3">
           <button className="rounded-xl border px-3 py-2 text-sm">Track Order</button>
